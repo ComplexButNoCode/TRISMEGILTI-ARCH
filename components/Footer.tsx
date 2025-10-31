@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Footer: React.FC = () => {
+const Footer: React.FC<{ onManageClick: () => void }> = ({ onManageClick }) => {
   return (
     <footer className="bg-[#F4F4F4]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
@@ -39,6 +39,13 @@ const Footer: React.FC = () => {
                 </a>
              </div>
              <p className="text-sm text-gray-500">&copy; {new Date().getFullYear()} Trismegilti Studio.</p>
+             <button
+                onClick={onManageClick}
+                className="text-sm text-gray-500 hover:text-black transition-colors mt-4 underline underline-offset-2 decoration-1"
+                aria-label="Manage portfolio"
+              >
+                Manage Portfolio
+              </button>
           </div>
         </div>
 
