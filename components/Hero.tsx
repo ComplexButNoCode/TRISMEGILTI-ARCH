@@ -1,32 +1,37 @@
 import React from 'react';
 
+const AnimatedLine = ({ text, delay }: { text: string, delay: number }) => (
+  <div className="overflow-hidden">
+    <div className="animate-slide-in-up" style={{ animationDelay: `${delay}ms` }}>
+      {text}
+    </div>
+  </div>
+);
+
 const Hero: React.FC = () => {
   return (
-    <section className="relative h-screen flex items-end justify-center text-left overflow-hidden">
-      <div className="absolute inset-0">
-         <div 
-            className="absolute inset-0 bg-cover bg-center animate-hero-bg" 
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600585152225-358945c58953?q=80&w=2070&auto=format&fit=crop')" }}
-          ></div>
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent"></div>
-      <div className="relative z-10 p-8 md:p-16 w-full max-w-7xl mx-auto">
-        <div className="max-w-3xl">
-          <h1 className="text-sm md:text-base font-normal tracking-[0.3em] uppercase text-gray-600 mb-6">
-            Trismegilti Studio
+    <section className="relative h-screen flex flex-col justify-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-black leading-tight md:leading-tight">
+            <AnimatedLine text="Transmuting atmospheric" delay={200} />
+            <AnimatedLine text="environments through minimalist" delay={350} />
+            <AnimatedLine text="form, light and composition." delay={500} />
           </h1>
-          <p className="text-2xl md:text-4xl lg:text-5xl font-light text-gray-800 leading-snug md:leading-snug">
-            Transmuting atmospheric environments through <span className="block mt-2">minimalist form, expressive light and selected composition.</span>
-          </p>
         </div>
       </div>
-       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
-        <a href="#projects" aria-label="Scroll to projects">
-          <div className="w-px h-16 bg-gray-400">
-             <div className="w-px h-6 bg-gray-800 animate-scroll-indicator"></div>
+       <a href="#projects" aria-label="Scroll to projects" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 group">
+          <div className="w-px h-20 bg-gray-300 transition-colors duration-300 group-hover:bg-black">
+             <div className="w-px h-8 bg-black transition-transform duration-1000 group-hover:translate-y-12" style={{ animation: 'scroll-indicator 2.5s infinite ease-in-out' }}></div>
           </div>
+          <style>{`
+            @keyframes scroll-indicator {
+              0% { transform: translateY(0); }
+              50% { transform: translateY(48px); }
+              100% { transform: translateY(0); }
+            }
+          `}</style>
         </a>
-      </div>
     </section>
   );
 };
