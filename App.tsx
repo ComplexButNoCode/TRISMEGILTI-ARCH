@@ -9,54 +9,21 @@ import type { Project } from './types';
 const App: React.FC = () => {
 
   const projects: Project[] = [
-    {
-      id: 1,
-      title: 'Casa Atemporal',
-      category: 'Residencial',
-      description: 'A study in concrete and glass, blurring the lines between interior and exterior spaces. The design prioritizes natural light and seamless integration with the surrounding landscape.',
-      imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop',
-      year: 2023,
-    },
-    {
-      id: 2,
-      title: 'Pavilhão da Luz',
-      category: 'Cultural',
-      description: 'An open-air pavilion designed to capture and manipulate natural light throughout the day, creating an ever-changing series of shadows and illuminations.',
-      imageUrl: 'https://images.unsplash.com/photo-1580202175948-46a335435a24?q=80&w=1887&auto=format&fit=crop',
-      year: 2022,
-    },
-    {
-      id: 3,
-      title: 'Refúgio Minimalista',
-      category: 'Residencial',
-      description: 'A secluded retreat focusing on raw materials and serene, uncluttered living. Its monolithic form stands in quiet dialogue with the rugged nature it inhabits.',
-      imageUrl: 'https://images.unsplash.com/photo-1617103987923-5858045996f5?q=80&w=1887&auto=format&fit=crop',
-      year: 2024,
-    },
-    {
-      id: 4,
-      title: 'Galeria Vertical',
-      category: 'Comercial',
-      description: 'Transforming a narrow urban lot into a multi-level art gallery with a striking facade that acts as a canvas for the city itself.',
-      imageUrl: 'https://images.unsplash.com/photo-1613262512128-3b45a27011d6?q=80&w=1887&auto=format&fit=crop',
-      year: 2023,
-    },
-    {
-        id: 5,
-        title: 'Espaço Contemplativo',
-        category: 'Institucional',
-        description: 'A quiet space for reflection, characterized by its powerful monolithic form and a profound connection to the sky and surrounding nature.',
-        imageUrl: 'https://images.unsplash.com/photo-1563223946-4c4f52445b5c?q=80&w=1887&auto=format&fit=crop',
-        year: 2021,
-    },
-    {
-        id: 6,
-        title: 'Loft Urbano',
-        category: 'Residencial',
-        description: 'Industrial elements meet warm, natural textures in this adaptive reuse of a historic warehouse, creating a spacious and light-filled home.',
-        imageUrl: 'https://images.unsplash.com/photo-1615875605825-5eb9bb5c689a?q=80&w=1964&auto=format&fit=crop',
-        year: 2024,
-    }
+    { id: 1, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/PORTFOLIO/image.jpg' },
+    { id: 2, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/PORTFOLIO/image-1.jpg' },
+    { id: 3, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/PORTFOLIO/image-2.jpg' },
+    { id: 4, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/PORTFOLIO/image-3.jpg' },
+    { id: 5, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/PORTFOLIO/image-4.jpg' },
+    { id: 6, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/PORTFOLIO/image-5.jpg' },
+    { id: 7, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/PORTFOLIO/image-6.jpg' },
+    { id: 8, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/PORTFOLIO/image-7.jpg' },
+    { id: 9, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/PORTFOLIO/image-8.jpg' },
+    { id: 10, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/PORTFOLIO/image-9.jpg' },
+    { id: 11, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/PORTFOLIO/image-10.jpg' },
+    { id: 12, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/PORTFOLIO/image-11.jpg' },
+    { id: 13, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/PORTFOLIO/image-12.jpg' },
+    { id: 14, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/PORTFOLIO/image-13.jpg' },
+    { id: 15, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/PORTFOLIO/image-14.jpg' }
   ];
 
   return (
