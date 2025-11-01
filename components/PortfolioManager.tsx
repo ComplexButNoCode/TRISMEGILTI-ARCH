@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from 'react';
 import type { Project } from '../types';
 
@@ -13,7 +14,7 @@ const ManagerImageItem: React.FC<{ project: Project; onRemove: (id: number) => v
   return (
     <div className="relative group aspect-square">
       {imageError ? (
-        <div className="w-full h-full flex items-center justify-center bg-gray-100 rounded-md text-gray-500 text-center text-xs">
+        <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-500 text-center text-xs">
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -25,11 +26,11 @@ const ManagerImageItem: React.FC<{ project: Project; onRemove: (id: number) => v
         <img
           src={project.imageUrl}
           alt="Project thumbnail"
-          className="object-cover w-full h-full rounded-md"
+          className="object-cover w-full h-full"
           onError={() => setImageError(true)}
         />
       )}
-      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-md">
+      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
         <button 
           onClick={() => onRemove(project.id)} 
           className="text-white bg-red-600 hover:bg-red-700 rounded-full w-9 h-9 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform"
@@ -100,7 +101,7 @@ const PortfolioManager: React.FC<PortfolioManagerProps> = ({ projects, setProjec
 
             <button
               onClick={handleAddClick}
-              className="aspect-square border-2 border-dashed border-gray-300 rounded-md flex flex-col items-center justify-center text-gray-500 hover:bg-gray-200/50 hover:border-gray-400 transition-colors"
+              className="aspect-square flex flex-col items-center justify-center text-gray-400 hover:bg-gray-200/50 hover:text-gray-600 transition-colors"
               aria-label="Add new images"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
