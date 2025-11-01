@@ -6,17 +6,18 @@ import Footer from './components/Footer';
 import PortfolioManager from './components/PortfolioManager';
 import type { Project } from './types';
 
-// Programmatically generate the initial projects list.
-// This will look for images named image1.jpg, image2.jpg, etc., in the root assets folder.
-const MAX_IMAGES_TO_CHECK = 50; // We'll check for up to 50 images.
-const INITIAL_PROJECTS: Project[] = Array.from({ length: MAX_IMAGES_TO_CHECK }, (_, i) => {
-  const id = i + 1;
-  return {
-    id: id,
-    imageUrl: `assets/image${id}.jpg`, // Corrected: Path is relative to the root 'assets' folder.
-  };
-});
-
+const INITIAL_PROJECTS: Project[] = [
+  { id: 1, imageUrl: '/assets/image1.jpg' },
+  { id: 2, imageUrl: '/assets/image2.jpg' },
+  { id: 3, imageUrl: '/assets/image3.jpg' },
+  { id: 4, imageUrl: '/assets/image4.jpg' },
+  { id: 5, imageUrl: '/assets/image5.jpg' },
+  { id: 6, imageUrl: '/assets/image6.jpg' },
+  { id: 7, imageUrl: '/assets/image7.jpg' },
+  { id: 8, imageUrl: '/assets/image8.jpg' },
+  { id: 9, imageUrl: '/assets/image9.jpg' },
+  { id: 10, imageUrl: '/assets/image10.jpg' },
+];
 
 const App: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -28,9 +29,9 @@ const App: React.FC = () => {
       const storedProjects = localStorage.getItem('portfolio_projects');
       if (storedProjects) {
         const parsedProjects = JSON.parse(storedProjects);
-        // Filter out default projects that might have been saved before, using the correct root path.
-        const userAddedProjects = parsedProjects.filter((p: Project) => !p.imageUrl.startsWith('assets/'));
-        setProjects([...INITIAL_PROJECTS, ...userAddedProjects]);
+        // User-added projects are stored with data: URL, they won't start with '/assets/'
+        // This logic remains correct for separating default vs user-added.
+        setProjects([...INITIAL_PROJECTS, ...parsedProjects]);
       } else {
         setProjects(INITIAL_PROJECTS);
       }
@@ -44,8 +45,8 @@ const App: React.FC = () => {
   useEffect(() => {
     if (isDataLoaded) {
       try {
-        // Only save user-added projects to localStorage to avoid storing the default list.
-        const userAddedProjects = projects.filter(p => !p.imageUrl.startsWith('assets/'));
+        // Only save user-added projects (which are base64 strings) to localStorage.
+        const userAddedProjects = projects.filter(p => p.imageUrl.startsWith('data:image'));
         localStorage.setItem('portfolio_projects', JSON.stringify(userAddedProjects));
       } catch (error) {
         console.error("Failed to save projects to localStorage. Data might be too large.", error);
