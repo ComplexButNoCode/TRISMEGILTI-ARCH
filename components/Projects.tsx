@@ -20,7 +20,8 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
             alt={`Project ${project.id}`}
             className="w-full h-full object-cover"
             onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = '/assets/placeholder.jpg';
+              // Se a imagem falhar, apenas oculta o <img> sem placeholder
+              (e.currentTarget as HTMLImageElement).style.display = 'none';
             }}
           />
         </div>
