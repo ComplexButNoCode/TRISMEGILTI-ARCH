@@ -8,9 +8,7 @@ export const translations = {
     close: 'Close',
 
     // Hero
-    hero_line1: 'Raw Concrete. Fluid Forms.',
-    hero_line2: 'An architecture of organic minimalism.',
-    hero_line3: 'Crafted for light and life.',
+    hero_line1: 'Minimalist modern architecture and design.',
 
     // Projects
     section_title_works: 'Selected Works',
@@ -51,9 +49,7 @@ export const translations = {
     close: 'Fechar',
 
     // Hero
-    hero_line1: 'Concreto Bruto. Formas Fluidas.',
-    hero_line2: 'Uma arquitetura de minimalismo orgânico.',
-    hero_line3: 'Criada para luz e vida.',
+    hero_line1: 'Arquitetura e design moderno minimalista.',
 
     // Projects
     section_title_works: 'Obras Selecionadas',
