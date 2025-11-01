@@ -14,7 +14,7 @@ const INITIAL_PROJECTS: Project[] = Array.from({ length: MAX_IMAGES_TO_CHECK }, 
   const id = i + 1;
   return {
     id: id,
-    imageUrl: `components/assets/image${id}.jpg`, // Path updated to look inside components/assets/
+    imageUrl: `components/assets/image${id}.jpg`, // Corrected: Path does NOT include a hyphen.
   };
 });
 
@@ -29,8 +29,8 @@ const App: React.FC = () => {
       const storedProjects = localStorage.getItem('portfolio_projects');
       if (storedProjects) {
         const parsedProjects = JSON.parse(storedProjects);
-        // Ensure stored projects have unique IDs, which might not be the case with the initial array.
-        // We can filter out the default projects that might have been saved before.
+        // We filter out the default projects that might have been saved before.
+        // This check is robust and works with the correct non-hyphenated path.
         const userAddedProjects = parsedProjects.filter((p: Project) => !p.imageUrl.startsWith('components/assets/'));
         setProjects([...INITIAL_PROJECTS, ...userAddedProjects]);
       } else {
@@ -63,29 +63,6 @@ const App: React.FC = () => {
       document.body.style.overflow = 'unset';
     }
   }, [isManagerOpen]);
-
-  const handleSetProjects = (newProjects: React.SetStateAction<Project[]>) => {
-    setProjects(prevProjects => {
-      const resolvedProjects = typeof newProjects === 'function' ? newProjects(prevProjects) : newProjects;
-      // When managing, we want to combine the initial set with what's being managed
-      const initialImageUrls = new Set(INITIAL_PROJECTS.map(p => p.imageUrl));
-      const currentInitial = resolvedProjects.filter(p => initialImageUrls.has(p.imageUrl));
-      const userAdded = resolvedProjects.filter(p => !p.imageUrl.startsWith('components/assets/'));
-      return [...currentInitial, ...userAdded];
-    });
-  };
-  
-  const projectsForManager = projects.filter(p => {
-     // Don't show broken initial images in the manager
-     // This is a proxy, actual check happens in the component with onError
-     const imageId = parseInt(p.imageUrl.replace(/[^0-9]/g, ''), 10);
-     if (p.imageUrl.startsWith('components/assets/') && imageId > 24) { // Assuming we know the max real image for now
-        // This is a simplification. A better approach would be to pre-check images,
-        // but for now, we just pass them and let the component handle errors.
-     }
-     return true;
-  });
-
 
   return (
     <div className="bg-[#F4F4F4] text-[#111111] antialiased">
