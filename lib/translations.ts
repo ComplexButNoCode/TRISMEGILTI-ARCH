@@ -1,90 +1,89 @@
-
 export const translations = {
   en: {
     // Header
     menu: 'Menu',
     nav_works: 'Works',
-    nav_principle: 'Principle',
-    nav_dialogue: 'Dialogue',
+    nav_principle: 'Philosophy',
+    nav_dialogue: 'Contact',
     close: 'Close',
 
     // Hero
-    hero_line1: 'Transcending Form, Defining Space.',
-    hero_line2: 'A Dialogue of Modern Architecture,',
-    hero_line3: 'in Light, Matter, and Rhythm.',
+    hero_line1: 'Raw Concrete. Fluid Forms.',
+    hero_line2: 'An architecture of organic minimalism.',
+    hero_line3: 'Crafted for light and life.',
 
     // Projects
-    section_title_works: 'Works',
-    principle_title: 'Our Principle',
-    principle_text: 'We practice architectural design as applied philosophy. Guided by Hermetic principles, our work creates a conscious dialogue between human experience and the built environment. We specialize in contemporary residential and commercial projects, crafting spaces that are not mere structures, but resonant compositions of light, material, and geometric harmony, timelessly connected to their context.',
-    axioms_title: 'Our Axioms',
-    axiom_1: 'Rhythm in Form',
-    axiom_2: 'Polarity of Light & Shadow',
-    axiom_3: 'Vibration of Matter',
-    axiom_4: 'The Gender of Space',
+    section_title_works: 'Selected Works',
+    principle_title: 'Our Vision',
+    principle_text: "We sculpt with concrete, creating a silent, powerful dialogue between mass and void. Our work embraces organic curves and minimalist principles, reducing architecture to its essential expression. The result is pure, sensorial spaces where raw material and fluid form invite human connection.",
+    axioms_title: 'Core Principles',
+    axiom_1: 'Minimalism: Distilling form to its purest essence. Every line serves a purpose.',
+    axiom_2: 'Materiality: Celebrating raw concrete—its texture, strength, and honesty.',
+    axiom_3: 'Fluidity: Embracing organic curves that guide movement and soften structure.',
+    axiom_4: 'Light & Shadow: Designing voids that sculpt space and define atmosphere.',
     
     // Footer
-    cta_title: "Begin Your Architectural Dialogue",
-    cta_email: 'dialogue@trismegilti.com',
-    about_title: 'Principle',
-    about_text: 'Trismegilti is a Brazil-based architecture studio focused on contemporary design with a philosophical core. We apply hermetic principles to create unique residential and commercial projects, crafting atmospheric and meaningful spaces where form and function resonate.',
-    manage_portfolio: 'Manage Portfolio',
+    cta_title: "Let's build a vision.",
+    cta_email: '@trismegilti',
+    about_title: 'Our Studio',
+    about_text: 'Trismegilti is a modern architecture studio dedicated to the poetics of minimalism. We specialize in creating resonant spaces defined by the interplay of raw concrete, organic curves, and natural light. Our work is a pursuit of sensorial, essential architecture.',
     copyright: `© ${new Date().getFullYear()} Trismegilti Studio. All rights reserved.`,
-
-    // Manager
-    manager_title: 'Manage Archive',
-    manager_done: 'Done',
-    manager_add: 'Add Images',
-    manager_remove_image_alt: 'Image of project',
-    manager_remove_aria: 'Remove image of project',
-    manager_add_aria: 'Add new images',
-    manager_image_error: 'Could not load image',
     
     // Image Fallback
     image_load_error: "Image failed to load",
+
+    // FIX: Add missing translation keys for the Portfolio Manager to resolve TypeScript errors.
+    // Portfolio Manager
+    manager_title: 'Manage Portfolio',
+    manager_done: 'Done',
+    manager_add: 'Add',
+    manager_add_aria: 'Add new images',
+    manager_remove_image_alt: 'Project image',
+    manager_remove_aria: 'Remove image',
+    manager_image_error: 'Image failed to load',
   },
   pt: {
     // Header
     menu: 'Menu',
     nav_works: 'Obras',
-    nav_principle: 'Princípio',
-    nav_dialogue: 'Diálogo',
+    nav_principle: 'Filosofia',
+    nav_dialogue: 'Contato',
     close: 'Fechar',
 
     // Hero
-    hero_line1: 'Transcendendo a Forma, Definindo o Espaço.',
-    hero_line2: 'Um Diálogo da Arquitetura Moderna,',
-    hero_line3: 'em Luz, Matéria e Ritmo.',
+    hero_line1: 'Concreto Bruto. Formas Fluidas.',
+    hero_line2: 'Uma arquitetura de minimalismo orgânico.',
+    hero_line3: 'Criada para luz e vida.',
 
     // Projects
-    section_title_works: 'Obras',
-    principle_title: 'Nosso Princípio',
-    principle_text: 'Praticamos o design arquitetônico como filosofia aplicada. Guiados por princípios Herméticos, nosso trabalho cria um diálogo consciente entre a experiência humana e o ambiente construído. Especializamo-nos em projetos residenciais e comerciais contemporâneos, criando espaços que não são meras estruturas, mas composições ressonantes de luz, matéria e harmonia geométrica, atemporalmente conectadas ao seu contexto.',
-    axioms_title: 'Nossos Axiomas',
-    axiom_1: 'Ritmo na Forma',
-    axiom_2: 'Polaridade de Luz e Sombra',
-    axiom_3: 'Vibração da Matéria',
-    axiom_4: 'O Gênero do Espaço',
+    section_title_works: 'Obras Selecionadas',
+    principle_title: 'Nossa Visão',
+    principle_text: 'Esculpimos com concreto, criando um diálogo silencioso e poderoso entre massa e vazio. Nosso trabalho abraça curvas orgânicas e princípios minimalistas, reduzindo a arquitetura à sua expressão essencial. O resultado são espaços puros e sensoriais onde a matéria-prima e a forma fluida convidam à conexão humana.',
+    axioms_title: 'Princípios Essenciais',
+    axiom_1: 'Minimalismo: Destilando a forma à sua mais pura essência. Cada linha tem um propósito.',
+    axiom_2: 'Materialidade: Celebrando o concreto bruto — sua textura, força e honestidade.',
+    axiom_3: 'Fluidez: Abraçando curvas orgânicas que guiam o movimento e suavizam a estrutura.',
+    axiom_4: 'Luz & Sombra: Projetando vazios que esculpem o espaço e definem a atmosfera.',
 
     // Footer
-    cta_title: 'Inicie Seu Diálogo Arquitetônico',
-    cta_email: 'dialogo@trismegilti.com',
-    about_title: 'Princípio',
-    about_text: 'Trismegilti é um estúdio de arquitetura brasileiro focado em design contemporâneo com uma essência filosófica. Aplicamos princípios herméticos para criar projetos residenciais e comerciais únicos, elaborando espaços atmosféricos e significativos onde forma e função ressoam.',
-    manage_portfolio: 'Gerenciar Portfólio',
+    cta_title: 'Vamos construir uma visão.',
+    cta_email: '@trismegilti',
+    about_title: 'Nosso Estúdio',
+    about_text: 'Trismegilti é um estúdio de arquitetura moderna dedicado à poética do minimalismo. Somos especialistas na criação de espaços ressonantes definidos pela interação entre concreto bruto, curvas orgânicas e luz natural. Nosso trabalho é uma busca por uma arquitetura sensorial e essencial.',
     copyright: `© ${new Date().getFullYear()} Trismegilti Studio. Todos os direitos reservados.`,
-
-    // Manager
-    manager_title: 'Gerenciar Arquivo',
-    manager_done: 'Concluir',
-    manager_add: 'Adicionar Imagens',
-    manager_remove_image_alt: 'Imagem do projeto',
-    manager_remove_aria: 'Remover imagem do projeto',
-    manager_add_aria: 'Adicionar novas imagens',
-    manager_image_error: 'Não foi possível carregar a imagem',
     
     // Image Fallback
-    image_load_error: "Imagem não carregada",
+    image_load_error: "Falha ao carregar imagem",
+
+    // FIX: Add missing translation keys for the Portfolio Manager to resolve TypeScript errors.
+    // Portfolio Manager
+    manager_title: 'Gerenciar Portfólio',
+    manager_done: 'Concluído',
+    manager_add: 'Adicionar',
+    manager_add_aria: 'Adicionar novas imagens',
+    manager_remove_image_alt: 'Imagem do projeto',
+    manager_remove_aria: 'Remover imagem',
+    manager_image_error: 'Falha ao carregar imagem',
   },
 };
 

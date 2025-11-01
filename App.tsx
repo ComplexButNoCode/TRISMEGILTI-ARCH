@@ -4,7 +4,6 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Footer from './components/Footer';
-import PortfolioManager from './components/PortfolioManager';
 import { LocalizationProvider } from './contexts/LocalizationContext';
 import type { Project } from './types';
 
@@ -22,44 +21,7 @@ const INITIAL_PROJECTS: Project[] = [
 ];
 
 const App: React.FC = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [isManagerOpen, setIsManagerOpen] = useState(false);
-  const [isDataLoaded, setIsDataLoaded] = useState(false);
-
-  // Load projects from localStorage + initials
-  useEffect(() => {
-    try {
-      const storedProjects = localStorage.getItem('portfolio_projects');
-      const parsedProjects = storedProjects ? JSON.parse(storedProjects) : [];
-      
-      const initialIds = new Set(INITIAL_PROJECTS.map(p => p.id));
-      const filteredParsedProjects = parsedProjects.filter(p => !initialIds.has(p.id));
-
-      setProjects([...INITIAL_PROJECTS, ...filteredParsedProjects]);
-    } catch (error) {
-      console.error('Failed to parse projects from localStorage', error);
-      setProjects(INITIAL_PROJECTS);
-    }
-    setIsDataLoaded(true);
-  }, []);
-
-  // Save only user images (base64) to localStorage
-  useEffect(() => {
-    if (!isDataLoaded) return;
-
-    try {
-      const userAddedProjects = projects.filter(p => p.imageUrl.startsWith('data:image'));
-      localStorage.setItem('portfolio_projects', JSON.stringify(userAddedProjects));
-    } catch (error) {
-      console.error('Failed to save projects to localStorage', error);
-      alert("Could not save new images. The browser's local storage might be full.");
-    }
-  }, [projects, isDataLoaded]);
-
-  // Block scroll when PortfolioManager is open
-  useEffect(() => {
-    document.body.style.overflow = isManagerOpen ? 'hidden' : 'unset';
-  }, [isManagerOpen]);
+  const [projects] = useState<Project[]>(INITIAL_PROJECTS);
 
   return (
     <LocalizationProvider>
@@ -69,14 +31,7 @@ const App: React.FC = () => {
           <Hero />
           <Projects projects={projects} />
         </main>
-        <Footer onManageClick={() => setIsManagerOpen(true)} />
-        {isManagerOpen && (
-          <PortfolioManager
-            projects={projects}
-            setProjects={setProjects}
-            onClose={() => setIsManagerOpen(false)}
-          />
-        )}
+        <Footer />
       </div>
     </LocalizationProvider>
   );
