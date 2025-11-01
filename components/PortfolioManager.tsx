@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import type { Project } from '../types';
 
 interface PortfolioManagerProps {
@@ -6,6 +6,43 @@ interface PortfolioManagerProps {
   setProjects: React.Dispatch<React.SetStateAction<Project[]>>;
   onClose: () => void;
 }
+
+const ManagerImageItem: React.FC<{ project: Project; onRemove: (id: number) => void }> = ({ project, onRemove }) => {
+  const [imageError, setImageError] = useState(false);
+
+  return (
+    <div className="relative group aspect-square">
+      {imageError ? (
+        <div className="w-full h-full flex items-center justify-center bg-gray-100 rounded-md text-gray-500 text-center text-xs">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <p className="mt-1">Image<br />failed to load</p>
+          </div>
+        </div>
+      ) : (
+        <img
+          src={project.imageUrl}
+          alt="Project thumbnail"
+          className="object-cover w-full h-full rounded-md"
+          onError={() => setImageError(true)}
+        />
+      )}
+      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-md">
+        <button 
+          onClick={() => onRemove(project.id)} 
+          className="text-white bg-red-600 hover:bg-red-700 rounded-full w-9 h-9 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform"
+          aria-label="Remove image"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+};
 
 const PortfolioManager: React.FC<PortfolioManagerProps> = ({ projects, setProjects, onClose }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -58,20 +95,7 @@ const PortfolioManager: React.FC<PortfolioManagerProps> = ({ projects, setProjec
         <main className="flex-grow">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
             {projects.map(project => (
-              <div key={project.id} className="relative group aspect-square">
-                <img src={project.imageUrl} alt="Project thumbnail" className="object-cover w-full h-full rounded-md"/>
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-md">
-                  <button 
-                    onClick={() => handleRemoveImage(project.id)} 
-                    className="text-white bg-red-600 hover:bg-red-700 rounded-full w-9 h-9 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform"
-                    aria-label="Remove image"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
+              <ManagerImageItem key={project.id} project={project} onRemove={handleRemoveImage} />
             ))}
 
             <button
