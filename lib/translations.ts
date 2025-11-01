@@ -9,14 +9,14 @@ export const translations = {
     close: 'Close',
 
     // Hero
-    hero_line1: 'As Above, So Below:',
-    hero_line2: 'Shaping Space, Light,',
-    hero_line3: 'and the Silence Within.',
+    hero_line1: 'Transcending Form, Defining Space.',
+    hero_line2: 'A Dialogue of Modern Architecture,',
+    hero_line3: 'in Light, Matter, and Rhythm.',
 
     // Projects
     section_title_works: 'Works',
     principle_title: 'Our Principle',
-    principle_text: 'We perceive architecture as a medium for correspondence—a bridge between the inner emotional landscape and the outer material world. Each space is a vessel, designed to resonate with the vibration of its inhabitants and its environment.',
+    principle_text: 'We practice architectural design as applied philosophy. Guided by Hermetic principles, our work creates a conscious dialogue between human experience and the built environment. We specialize in contemporary residential and commercial projects, crafting spaces that are not mere structures, but resonant compositions of light, material, and geometric harmony, timelessly connected to their context.',
     axioms_title: 'Our Axioms',
     axiom_1: 'Rhythm in Form',
     axiom_2: 'Polarity of Light & Shadow',
@@ -24,10 +24,10 @@ export const translations = {
     axiom_4: 'The Gender of Space',
     
     // Footer
-    cta_title: "Let's Manifest",
+    cta_title: "Begin Your Architectural Dialogue",
     cta_email: 'dialogue@trismegilti.com',
     about_title: 'Principle',
-    about_text: 'A Brazil-based studio dedicated to the hermetic art of architecture, creating atmospheric vessels for human experience.',
+    about_text: 'Trismegilti is a Brazil-based architecture studio focused on contemporary design with a philosophical core. We apply hermetic principles to create unique residential and commercial projects, crafting atmospheric and meaningful spaces where form and function resonate.',
     manage_portfolio: 'Manage Portfolio',
     copyright: `© ${new Date().getFullYear()} Trismegilti Studio. All rights reserved.`,
 
@@ -52,14 +52,14 @@ export const translations = {
     close: 'Fechar',
 
     // Hero
-    hero_line1: 'O que está Acima é como o que está Abaixo:',
-    hero_line2: 'Moldando o Espaço, a Luz,',
-    hero_line3: 'e o Silêncio Interior.',
+    hero_line1: 'Transcendendo a Forma, Definindo o Espaço.',
+    hero_line2: 'Um Diálogo da Arquitetura Moderna,',
+    hero_line3: 'em Luz, Matéria e Ritmo.',
 
     // Projects
     section_title_works: 'Obras',
     principle_title: 'Nosso Princípio',
-    principle_text: 'Percebemos a arquitetura como um meio de correspondência — uma ponte entre a paisagem emocional interna e o mundo material externo. Cada espaço é um receptáculo, projetado para ressoar com a vibração de seus habitantes e seu ambiente.',
+    principle_text: 'Praticamos o design arquitetônico como filosofia aplicada. Guiados por princípios Herméticos, nosso trabalho cria um diálogo consciente entre a experiência humana e o ambiente construído. Especializamo-nos em projetos residenciais e comerciais contemporâneos, criando espaços que não são meras estruturas, mas composições ressonantes de luz, matéria e harmonia geométrica, atemporalmente conectadas ao seu contexto.',
     axioms_title: 'Nossos Axiomas',
     axiom_1: 'Ritmo na Forma',
     axiom_2: 'Polaridade de Luz e Sombra',
@@ -67,10 +67,10 @@ export const translations = {
     axiom_4: 'O Gênero do Espaço',
 
     // Footer
-    cta_title: 'Vamos Manifestar',
+    cta_title: 'Inicie Seu Diálogo Arquitetônico',
     cta_email: 'dialogo@trismegilti.com',
     about_title: 'Princípio',
-    about_text: 'Um estúdio sediado no Brasil, dedicado à arte hermética da arquitetura, criando receptáculos atmosféricos para a experiência humana.',
+    about_text: 'Trismegilti é um estúdio de arquitetura brasileiro focado em design contemporâneo com uma essência filosófica. Aplicamos princípios herméticos para criar projetos residenciais e comerciais únicos, elaborando espaços atmosféricos e significativos onde forma e função ressoam.',
     manage_portfolio: 'Gerenciar Portfólio',
     copyright: `© ${new Date().getFullYear()} Trismegilti Studio. Todos os direitos reservados.`,
 
