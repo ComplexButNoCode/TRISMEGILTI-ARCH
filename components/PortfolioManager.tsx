@@ -52,7 +52,11 @@ const PortfolioManager: React.FC<PortfolioManagerProps> = ({ projects, setProjec
     const files = event.target.files;
     if (!files) return;
 
-    Array.from(files).forEach(file => {
+    // FIX: Replaced `Array.from().forEach()` with a `for...of` loop.
+    // This ensures correct type inference for `file` as a `File` object,
+    // resolving the error where it was being inferred as `unknown` and causing
+    // a type conflict with `reader.readAsDataURL` which expects a `Blob`.
+    for (const file of files) {
       const reader = new FileReader();
       reader.onload = (e) => {
         const imageUrl = e.target?.result as string;
@@ -65,7 +69,7 @@ const PortfolioManager: React.FC<PortfolioManagerProps> = ({ projects, setProjec
         }
       };
       reader.readAsDataURL(file);
-    });
+    }
 
     event.target.value = '';
   };

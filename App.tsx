@@ -8,16 +8,16 @@ import PortfolioManager from './components/PortfolioManager';
 import type { Project } from './types';
 
 const INITIAL_PROJECTS: Project[] = [
-    { id: 1, imageUrl: '/assets/image1.jpg' },
-    { id: 2, imageUrl: '/assets/image2.jpg' },
-    { id: 3, imageUrl: '/assets/image3.jpg' },
-    { id: 4, imageUrl: '/assets/image4.jpg' },
-    { id: 5, imageUrl: '/assets/image5.jpg' },
-    { id: 6, imageUrl: '/assets/image6.jpg' },
-    { id: 7, imageUrl: '/assets/image7.jpg' },
-    { id: 8, imageUrl: '/assets/image8.jpg' },
-    { id: 9, imageUrl: '/assets/image9.jpg' },
-    { id: 10, imageUrl: '/assets/image10.jpg' },
+    { id: 1, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/Public/assets/image1.jpg' },
+    { id: 2, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/Public/assets/image2.jpg' },
+    { id: 3, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/Public/assets/image3.jpg' },
+    { id: 4, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/Public/assets/image4.jpg' },
+    { id: 5, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/Public/assets/image5.jpg' },
+    { id: 6, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/Public/assets/image6.jpg' },
+    { id: 7, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/Public/assets/image7.jpg' },
+    { id: 8, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/Public/assets/image8.jpg' },
+    { id: 9, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/Public/assets/image9.jpg' },
+    { id: 10, imageUrl: 'https://raw.githubusercontent.com/ComplexButNoCode/TRISMEGILTI-ARCH/main/Public/assets/image10.jpg' },
 ];
 
 const App: React.FC = () => {
