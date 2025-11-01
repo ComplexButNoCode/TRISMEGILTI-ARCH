@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Footer from './components/Footer';
 import PortfolioManager from './components/PortfolioManager';
+import { LocalizationProvider } from './contexts/LocalizationContext';
 import type { Project } from './types';
 
 const INITIAL_PROJECTS: Project[] = [
@@ -25,13 +26,12 @@ const App: React.FC = () => {
   const [isManagerOpen, setIsManagerOpen] = useState(false);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
 
-  // Carregar projetos do localStorage + iniciais
+  // Load projects from localStorage + initials
   useEffect(() => {
     try {
       const storedProjects = localStorage.getItem('portfolio_projects');
       const parsedProjects = storedProjects ? JSON.parse(storedProjects) : [];
       
-      // Prevent duplicate initial projects if they were somehow saved to local storage
       const initialIds = new Set(INITIAL_PROJECTS.map(p => p.id));
       const filteredParsedProjects = parsedProjects.filter(p => !initialIds.has(p.id));
 
@@ -43,7 +43,7 @@ const App: React.FC = () => {
     setIsDataLoaded(true);
   }, []);
 
-  // Salvar apenas imagens do usuário (base64) no localStorage
+  // Save only user images (base64) to localStorage
   useEffect(() => {
     if (!isDataLoaded) return;
 
@@ -56,27 +56,29 @@ const App: React.FC = () => {
     }
   }, [projects, isDataLoaded]);
 
-  // Bloquear scroll quando o PortfolioManager estiver aberto
+  // Block scroll when PortfolioManager is open
   useEffect(() => {
     document.body.style.overflow = isManagerOpen ? 'hidden' : 'unset';
   }, [isManagerOpen]);
 
   return (
-    <div className="bg-[#F4F4F4] text-[#111111] antialiased min-h-screen">
-      <Header />
-      <main>
-        <Hero />
-        <Projects projects={projects} />
-      </main>
-      <Footer onManageClick={() => setIsManagerOpen(true)} />
-      {isManagerOpen && (
-        <PortfolioManager
-          projects={projects}
-          setProjects={setProjects}
-          onClose={() => setIsManagerOpen(false)}
-        />
-      )}
-    </div>
+    <LocalizationProvider>
+      <div className="bg-[#F4F4F4] text-[#111111] antialiased min-h-screen">
+        <Header />
+        <main>
+          <Hero />
+          <Projects projects={projects} />
+        </main>
+        <Footer onManageClick={() => setIsManagerOpen(true)} />
+        {isManagerOpen && (
+          <PortfolioManager
+            projects={projects}
+            setProjects={setProjects}
+            onClose={() => setIsManagerOpen(false)}
+          />
+        )}
+      </div>
+    </LocalizationProvider>
   );
 };
 

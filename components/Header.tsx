@@ -1,36 +1,42 @@
-import React, { useState, useEffect } from 'react';
 
-const FullScreenNav = ({ links, onClose }: { links: { name: string; href: string }[]; onClose: () => void; }) => (
-  <div className="fixed inset-0 bg-[#F4F4F4] z-[100] flex flex-col items-center justify-center animate-fade-in">
-    <button
-      onClick={onClose}
-      className="absolute top-8 right-8 text-gray-700 hover:text-black"
-      aria-label="Close menu"
-    >
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
-    </button>
-    <nav className="flex flex-col items-center space-y-8 animate-stagger-child">
-      {links.map((link, index) => (
-        <div key={link.name} className="overflow-hidden">
-          <a
-            href={link.href}
+import React, { useState, useEffect } from 'react';
+import { useLocalization } from '../contexts/LocalizationContext';
+
+const FullScreenNav = ({ links, onClose }: { links: { name: string; href: string }[]; onClose: () => void; }) => {
+    const { t } = useLocalization();
+    return (
+        <div className="fixed inset-0 bg-[#F4F4F4] z-[100] flex flex-col items-center justify-center animate-fade-in">
+            <button
             onClick={onClose}
-            className="block text-4xl md:text-6xl font-light text-gray-700 hover:text-black transition-colors duration-300"
-            style={{ animationDelay: `${150 + index * 100}ms` }}
-          >
-            {link.name}
-          </a>
+            className="absolute top-8 right-8 text-gray-700 hover:text-black"
+            aria-label={t.close}
+            >
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+            </button>
+            <nav className="flex flex-col items-center space-y-8 animate-stagger-child">
+            {links.map((link, index) => (
+                <div key={link.name} className="overflow-hidden">
+                <a
+                    href={link.href}
+                    onClick={onClose}
+                    className="block text-4xl md:text-6xl font-light text-gray-700 hover:text-black transition-colors duration-300"
+                    style={{ animationDelay: `${150 + index * 100}ms` }}
+                >
+                    {link.name}
+                </a>
+                </div>
+            ))}
+            </nav>
         </div>
-      ))}
-    </nav>
-  </div>
-);
+    );
+};
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useLocalization();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,9 +55,9 @@ const Header: React.FC = () => {
   }, [isOpen]);
 
   const navLinks = [
-    { name: 'Projects', href: '#projects' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    { name: t.nav_works, href: '#works' },
+    { name: t.nav_principle, href: '#principle' },
+    { name: t.nav_dialogue, href: '#dialogue' },
   ];
 
   return (
@@ -70,7 +76,7 @@ const Header: React.FC = () => {
               onClick={() => setIsOpen(true)}
               className="text-sm font-medium tracking-widest text-gray-700 hover:text-black transition-colors uppercase"
             >
-              Menu
+              {t.menu}
             </button>
           </div>
         </div>
