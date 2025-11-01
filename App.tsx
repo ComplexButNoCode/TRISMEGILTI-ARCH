@@ -14,7 +14,7 @@ const INITIAL_PROJECTS: Project[] = Array.from({ length: MAX_IMAGES_TO_CHECK }, 
   const id = i + 1;
   return {
     id: id,
-    imageUrl: `components/assets/image${id}.jpg`,
+    imageUrl: `components/assets/image${id}.jpg`, // Path updated to look inside components/assets/
   };
 });
 
