@@ -24,47 +24,39 @@ const App: React.FC = () => {
   const [isManagerOpen, setIsManagerOpen] = useState(false);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
 
+  // Carregar projetos do localStorage + iniciais
   useEffect(() => {
     try {
       const storedProjects = localStorage.getItem('portfolio_projects');
-      if (storedProjects) {
-        const parsedProjects = JSON.parse(storedProjects);
-        // User-added projects are stored with data: URL, they won't start with '/assets/'
-        // This logic remains correct for separating default vs user-added.
-        setProjects([...INITIAL_PROJECTS, ...parsedProjects]);
-      } else {
-        setProjects(INITIAL_PROJECTS);
-      }
+      const parsedProjects = storedProjects ? JSON.parse(storedProjects) : [];
+      setProjects([...INITIAL_PROJECTS, ...parsedProjects]);
     } catch (error) {
-      console.error("Failed to parse projects from localStorage", error);
+      console.error('Failed to parse projects from localStorage', error);
       setProjects(INITIAL_PROJECTS);
     }
     setIsDataLoaded(true);
   }, []);
 
+  // Salvar apenas imagens do usuário (base64) no localStorage
   useEffect(() => {
-    if (isDataLoaded) {
-      try {
-        // Only save user-added projects (which are base64 strings) to localStorage.
-        const userAddedProjects = projects.filter(p => p.imageUrl.startsWith('data:image'));
-        localStorage.setItem('portfolio_projects', JSON.stringify(userAddedProjects));
-      } catch (error) {
-        console.error("Failed to save projects to localStorage. Data might be too large.", error);
-        alert("Could not save new images. The browser's local storage might be full.");
-      }
+    if (!isDataLoaded) return;
+
+    try {
+      const userAddedProjects = projects.filter(p => p.imageUrl.startsWith('data:image'));
+      localStorage.setItem('portfolio_projects', JSON.stringify(userAddedProjects));
+    } catch (error) {
+      console.error('Failed to save projects to localStorage', error);
+      alert("Could not save new images. The browser's local storage might be full.");
     }
   }, [projects, isDataLoaded]);
 
+  // Bloquear scroll quando o PortfolioManager estiver aberto
   useEffect(() => {
-    if (isManagerOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isManagerOpen ? 'hidden' : 'unset';
   }, [isManagerOpen]);
 
   return (
-    <div className="bg-[#F4F4F4] text-[#111111] antialiased">
+    <div className="bg-[#F4F4F4] text-[#111111] antialiased min-h-screen">
       <Header />
       <main>
         <Hero />
