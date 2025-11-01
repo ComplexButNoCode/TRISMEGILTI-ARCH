@@ -6,32 +6,18 @@ import Footer from './components/Footer';
 import PortfolioManager from './components/PortfolioManager';
 import type { Project } from './types';
 
-const INITIAL_PROJECTS: Project[] = [
-  { id: 1, imageUrl: '/assets/image1.jpg' },
-  { id: 2, imageUrl: '/assets/image2.jpg' },
-  { id: 3, imageUrl: '/assets/image3.jpg' },
-  { id: 4, imageUrl: '/assets/image4.jpg' },
-  { id: 5, imageUrl: '/assets/image5.jpg' },
-  { id: 6, imageUrl: '/assets/image6.jpg' },
-  { id: 7, imageUrl: '/assets/image7.jpg' },
-  { id: 8, imageUrl: '/assets/image8.jpg' },
-  { id: 9, imageUrl: '/assets/image9.jpg' },
-  { id: 10, imageUrl: '/assets/image10.jpg' },
-  { id: 11, imageUrl: '/assets/image11.jpg' },
-  { id: 12, imageUrl: '/assets/image12.jpg' },
-  { id: 13, imageUrl: '/assets/image13.jpg' },
-  { id: 14, imageUrl: '/assets/image14.jpg' },
-  { id: 15, imageUrl: '/assets/image15.jpg' },
-  { id: 16, imageUrl: '/assets/image16.jpg' },
-  { id: 17, imageUrl: '/assets/image17.jpg' },
-  { id: 18, imageUrl: '/assets/image18.jpg' },
-  { id: 19, imageUrl: '/assets/image19.jpg' },
-  { id: 20, imageUrl: '/assets/image20.jpg' },
-  { id: 21, imageUrl: '/assets/image21.jpg' },
-  { id: 22, imageUrl: '/assets/image22.jpg' },
-  { id: 23, imageUrl: '/assets/image23.jpg' },
-  { id: 24, imageUrl: '/assets/image24.jpg' }
-];
+// Programmatically generate the initial projects list.
+// This will look for images named image1.jpg, image2.jpg, etc., in the assets folder.
+// If you add a new image like 'image25.jpg' to the folder, it will automatically appear.
+const MAX_IMAGES_TO_CHECK = 50; // We'll check for up to 50 images.
+const INITIAL_PROJECTS: Project[] = Array.from({ length: MAX_IMAGES_TO_CHECK }, (_, i) => {
+  const id = i + 1;
+  return {
+    id: id,
+    imageUrl: `components/assets/image${id}.jpg`,
+  };
+});
+
 
 const App: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -42,7 +28,11 @@ const App: React.FC = () => {
     try {
       const storedProjects = localStorage.getItem('portfolio_projects');
       if (storedProjects) {
-        setProjects(JSON.parse(storedProjects));
+        const parsedProjects = JSON.parse(storedProjects);
+        // Ensure stored projects have unique IDs, which might not be the case with the initial array.
+        // We can filter out the default projects that might have been saved before.
+        const userAddedProjects = parsedProjects.filter((p: Project) => !p.imageUrl.startsWith('components/assets/'));
+        setProjects([...INITIAL_PROJECTS, ...userAddedProjects]);
       } else {
         setProjects(INITIAL_PROJECTS);
       }
@@ -56,7 +46,9 @@ const App: React.FC = () => {
   useEffect(() => {
     if (isDataLoaded) {
       try {
-        localStorage.setItem('portfolio_projects', JSON.stringify(projects));
+        // Only save user-added projects to localStorage to avoid storing the default list.
+        const userAddedProjects = projects.filter(p => !p.imageUrl.startsWith('components/assets/'));
+        localStorage.setItem('portfolio_projects', JSON.stringify(userAddedProjects));
       } catch (error) {
         console.error("Failed to save projects to localStorage. Data might be too large.", error);
         alert("Could not save new images. The browser's local storage might be full.");
@@ -71,6 +63,29 @@ const App: React.FC = () => {
       document.body.style.overflow = 'unset';
     }
   }, [isManagerOpen]);
+
+  const handleSetProjects = (newProjects: React.SetStateAction<Project[]>) => {
+    setProjects(prevProjects => {
+      const resolvedProjects = typeof newProjects === 'function' ? newProjects(prevProjects) : newProjects;
+      // When managing, we want to combine the initial set with what's being managed
+      const initialImageUrls = new Set(INITIAL_PROJECTS.map(p => p.imageUrl));
+      const currentInitial = resolvedProjects.filter(p => initialImageUrls.has(p.imageUrl));
+      const userAdded = resolvedProjects.filter(p => !p.imageUrl.startsWith('components/assets/'));
+      return [...currentInitial, ...userAdded];
+    });
+  };
+  
+  const projectsForManager = projects.filter(p => {
+     // Don't show broken initial images in the manager
+     // This is a proxy, actual check happens in the component with onError
+     const imageId = parseInt(p.imageUrl.replace(/[^0-9]/g, ''), 10);
+     if (p.imageUrl.startsWith('components/assets/') && imageId > 24) { // Assuming we know the max real image for now
+        // This is a simplification. A better approach would be to pre-check images,
+        // but for now, we just pass them and let the component handle errors.
+     }
+     return true;
+  });
+
 
   return (
     <div className="bg-[#F4F4F4] text-[#111111] antialiased">
