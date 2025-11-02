@@ -10,7 +10,7 @@ interface ProjectsProps {
 const PrincipleBlock = () => {
   const { t } = useLocalization();
   return (
-    <div className="md:col-span-2 flex flex-col justify-center py-8 animate-image-reveal" style={{ animationDelay: '200ms' }}>
+    <div className="col-span-4 md:col-span-2 flex flex-col justify-center py-8 animate-image-reveal" style={{ animationDelay: '200ms' }}>
       <h3 className="text-sm font-medium tracking-widest uppercase text-gray-500 mb-4">{t.principle_title}</h3>
       <p className="text-lg md:text-xl font-light text-gray-800 leading-relaxed">
         {t.principle_text}
@@ -22,7 +22,7 @@ const PrincipleBlock = () => {
 const AxiomsBlock = () => {
     const { t } = useLocalization();
     return (
-        <div className="md:col-span-2 flex flex-col justify-center py-8 animate-image-reveal" style={{ animationDelay: '200ms' }}>
+        <div className="col-span-4 md:col-span-2 flex flex-col justify-center py-8 animate-image-reveal" style={{ animationDelay: '200ms' }}>
             <h3 className="text-sm font-medium tracking-widest uppercase text-gray-500 mb-4">{t.axioms_title}</h3>
             <ul className="text-lg md:text-xl font-light text-gray-800 leading-relaxed space-y-2">
             <li>{t.axiom_1}</li>

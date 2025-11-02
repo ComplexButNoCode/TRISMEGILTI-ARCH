@@ -21,7 +21,7 @@ const FullScreenNav = ({ links, onClose }: { links: { name: string; href: string
                 <a
                     href={link.href}
                     onClick={onClose}
-                    className="block text-4xl md:text-6xl font-light text-gray-700 hover:text-black transition-colors duration-300"
+                    className="block text-3xl sm:text-4xl md:text-6xl font-light text-gray-700 hover:text-black transition-colors duration-300"
                     style={{ animationDelay: `${150 + index * 100}ms` }}
                 >
                     {link.name}

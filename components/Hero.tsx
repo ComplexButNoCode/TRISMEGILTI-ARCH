@@ -1,7 +1,14 @@
 import React from 'react';
 import { useLocalization } from '../contexts/LocalizationContext';
 
-const DeconstructedWord = ({ word, delay, positionClasses }: { word: string, delay: number, positionClasses: string }) => (
+// FIX: Define props interface and type the component as a React.FC to correctly handle the 'key' prop.
+interface DeconstructedWordProps {
+    word: string;
+    delay: number;
+    positionClasses: string;
+}
+
+const DeconstructedWord: React.FC<DeconstructedWordProps> = ({ word, delay, positionClasses }) => (
     <div className={`absolute animate-place-word ${positionClasses}`} style={{ animationDelay: `${delay}ms` }}>
         {word}
     </div>
@@ -25,7 +32,7 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative w-full h-[60vh] max-h-[500px] md:h-[70vh] md:max-h-[600px]">
           <h1 className="sr-only">{t.hero_line1}</h1>
-          <div className="font-mono text-xl md:text-2xl lg:text-3xl uppercase tracking-wider text-black">
+          <div className="font-mono text-lg sm:text-xl md:text-2xl lg:text-3xl uppercase tracking-wider text-black">
               {words.map((word, index) => (
                   <DeconstructedWord
                       key={index}
